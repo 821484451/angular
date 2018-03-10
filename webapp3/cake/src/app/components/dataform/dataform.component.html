@@ -1,0 +1,52 @@
+<div>
+    <p class="head"><label >中文名字搜索：</label><input type="text" [(ngModel)]='key' placehoder='search' (change)='getdata()'/></p>
+    <table *ngIf='data.length>0'>
+        <thead>
+            <tr >
+                <th>{{dictionary[language.lantype]['all']||'all'}}<input type="checkbox" [checked]='checkArray.length==data.length' (click)='inverse()'/></th>
+               
+                <th>{{dictionary[language.lantype]['edit']||'edit'}}</th>
+                <ng-template ngFor let-item [ngForOf]='getkeys(data[0]||{})' let-k='index' [ngForTrackBy]="trackByFn">
+                    <th *ngIf='showcols.indexOf(item)<0'>{{dictionary[language.lantype][item]||item}}</th>
+                </ng-template>
+                <!-- <th *ngFor='let item of getkeys(data[0])||[]'>{{item}}</th> -->
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor='let obj of data||[] let idx=index' [class.highlight]='checkArray.indexOf(idx)>-1' (click)='bg(idx)'>
+                <td><input type="checkbox"  [checked]='checkArray.indexOf(idx)>-1'/></td>
+               
+                <td><input type="button" value="修改" (click)='getindex(idx)'></td>
+                <ng-template ngFor let-key [ngForOf]='getkeys(obj||{})' let-i='index' [ngForTrackBy]="trackByFn">
+                    <td *ngIf='showcols.indexOf(key)<0'>{{obj[key]}}</td>
+                </ng-template>
+               <!--  <td *ngFor='let key of getkeys(obj||{})'>{{obj[key]}}</td> -->
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+
+<div class="shade" *ngIf='show'>
+    <div class="pop">
+        <table>
+            <thead>
+                <tr>
+                    <th *ngFor='let item of getkeys(data[0]||{})'>{{item}}</th>
+                    <th>save<th>
+                </tr>    
+            </thead>
+            <tbody>
+                <tr>
+                    <td *ngFor='let key of getkeys(data[showindex]) let editidx=index'>
+                        <input type="text" [(ngModel)]='data[showindex][key]' [disabled]='editidx==0'>
+                    </td>   
+                    <td>
+                        <input type="button" value="保存" (click)='savedata()'>
+                        <input type="button" value="取消" (click)='cancel()'>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

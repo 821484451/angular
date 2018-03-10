@@ -1,0 +1,5 @@
+{
+    "api":"haoche",
+    "cols":"brand_name,oprice,nprice,license_time,license_area,car_type,biansuxiang,paifangbiaozhun",
+    "multiple":true
+}

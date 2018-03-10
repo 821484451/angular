@@ -1,0 +1,73 @@
+
+<table class="datagrid">
+    <thead>
+        <tr>
+            <th>{{dictionary[language.lantype]['add']||'add'}}</th>
+            <th>{{dictionary[language.lantype]['delete']||'delete'}}</th>
+            <th>{{dictionary[language.lantype]['edit']||'edit'}}</th>
+            <ng-template ngFor let-item [ngForOf]='getArrays(cakelist[0]||{})' let-k='index' [ngForTrackBy]="trackByFn">
+                <th *ngIf='showcols.indexOf(item)<0'>{{dictionary[language.lantype][item]||item}}</th>
+            </ng-template>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor='let cakeitem of cakelist let idx=index' [class.bg]='idx==itemindex' (click)='getId(idx)'>
+            <td><input type="button" value="添加" (click)='insert(idx)'></td>
+            <td><input type="button" value="删除" (click)='delete(idx)'></td>
+            <td><input type="button" value="修改" (click)='getindex(idx)'></td>
+            <ng-template ngFor let-key [ngForOf]='getArrays(cakeitem)' let-i='index' [ngForTrackBy]="trackByFn">
+                <td *ngIf='showcols.indexOf(key)<0'>{{cakeitem[key]}}</td>
+            </ng-template>
+            
+        </tr>
+    </tbody>
+</table>
+<div class="pagination" *ngIf="getpageArray().length!=1">
+    <input type="button" *ngFor='let num of getpageArray()' [value]='num+1' (click)='pagenum(num)'/>
+</div>
+<div class="shade" *ngIf='show'>
+    <div class="pop">
+        <table>
+            <thead>
+                <tr>
+                    <th *ngFor='let item of getArrays(cakelist[0]||{})'>{{item}}</th>
+                    <th>save<th>
+                </tr>    
+            </thead>
+            <tbody>
+                <tr>
+                    <td *ngFor='let key of getArrays(cakelist[showindex]) let editidx=index'>
+                        <input type="text" [(ngModel)]='cakelist[showindex][key]' [disabled]='editidx==0'>
+                    </td>   
+                    <td>
+                        <input type="button" value="保存" (click)='save(cakeapi)'>
+                        <input type="button" value="取消" (click)='cancel()'>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+<div class="shade" *ngIf='visible'>
+    <div class="pop">
+        <table>
+            <thead>
+                <tr>
+                    <th *ngFor='let item of getArrays(cakelist[0]||{})'>{{item}}</th>
+                    <th>save<th>
+                </tr>    
+            </thead>
+            <tbody>
+                <tr>
+                    <td *ngFor='let key of getArrays(cakelist[showindex]) let insertidx=index'>
+                        <input type="text" [(ngModel)]='insertidx==0?alldata.length:insertdata[key]' [disabled]='insertidx==0'>
+                    </td>   
+                    <td>
+                        <input type="button" value="保存" (click)='insertsave(cakeapi)'>
+                        <input type="button" value="取消" (click)='cancel()'>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

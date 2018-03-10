@@ -1,0 +1,8 @@
+.head{height:30px;padding-top:20px;}
+table,th,td{border: 1px solid #ccc;border-collapse: collapse;}
+th,td{text-align:center;padding:5px 10px;}
+th{background:#ddd;}
+.highlight{background:#26FFFF;}
+.bg{background:#0080FF;}
+.shade{position:absolute;width:100%;height:100%;left:0;top:0;background:rgba(255,255,255,0.8);overflow: scroll;}
+.pop{position:absolute;top:100px;left:20px;background:#fff;opacity:1;}

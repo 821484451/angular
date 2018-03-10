@@ -1,0 +1,5 @@
+/webapp3/api/node_modules/
+/webapp3/cake/node_modules/
+*.zip
+*.rar
+*.7z
