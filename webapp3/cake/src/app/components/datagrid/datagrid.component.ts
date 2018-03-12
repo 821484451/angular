@@ -43,7 +43,7 @@ export class DatagridComponent implements OnInit {
 
         });
         this.http.get('http://localhost:88/config1707/show.txt?_='+Math.random()).subscribe((res) => {
-                console.log(res.json().pagination);
+                
                 this.showcols=res.json().cols|| [];
                 this.pagesize=res.json().pagination||10;
 

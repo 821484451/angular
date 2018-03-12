@@ -1,7 +1,7 @@
-
-<table class="datagrid">
+<div class="nodata" *ngIf='!cakelist[0]'></div>
+<table class="datagrid" *ngIf='cakelist[0]'>
     <thead>
-        <tr>
+        <tr >
             <th>{{dictionary[language.lantype]['add']||'add'}}</th>
             <th>{{dictionary[language.lantype]['delete']||'delete'}}</th>
             <th>{{dictionary[language.lantype]['edit']||'edit'}}</th>

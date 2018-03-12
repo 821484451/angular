@@ -2,10 +2,10 @@ var mysql = require('mysql');
 
 var db = mysql.createPool({
     connectionLimit: 10,
-    host: "10.3.131.174",
+    host: "localhost",
     user: 'root',
-    password: '12345678',
-    database: 'cake',
+    password: '',
+    database: '21cake',
     multipleStatements: true
 })
 

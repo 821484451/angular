@@ -16,7 +16,8 @@ export class AppComponent implements OnInit{
     loginname:string;
     loginpassword:string;
     loginsucess:boolean=false;
-    num:number=1;
+    num:string='';
+    
 
     constructor(private http: Http ) { }
     ngOnInit() {
@@ -24,7 +25,7 @@ export class AppComponent implements OnInit{
             this.loginname=localStorage.username;
             this.loginsucess=true;
         }
-       
+        this.num=location.href
         this.http.get('http://localhost:88/config1707/dictionary.txt?_='+Math.random()).subscribe((res) => {
                 //console.log(res.json());
                 this.dictionary=res.json()||{}
@@ -56,6 +57,8 @@ export class AppComponent implements OnInit{
         this.loginsucess=false;
     }
     getnum(number){
-        this.num=number;
+        
+        this.num=location.href
+        
     }
 }

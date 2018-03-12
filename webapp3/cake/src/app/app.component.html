@@ -23,11 +23,11 @@
     <div class="main">
         <ul class="left">
 
-            <li [class.selected]="num==1" (click)='getnum(1)'><a routerLink="/products">{{dictionary[language.lantype]['cakemanagement']}}</a></li>
-            <li [class.selected]="num==2" (click)='getnum(2)'><a routerLink="/userlist">{{dictionary[language.lantype]['usermanagement']}}</a></li>
-            <li [class.selected]="num==3" (click)='getnum(3)'><a routerLink="/orderlist">{{dictionary[language.lantype]['ordermanagement']}}</a></li>
-            <li [class.selected]="num==4" (click)='getnum(4)'><a routerLink="/carlist">{{dictionary[language.lantype]['carmanagement']}}</a></li>
-            <li [class.selected]="num==5" (click)='getnum(5)'><a routerLink="/search">{{dictionary[language.lantype]['search']}}</a></li>
+            <li [class.selected]="num=='http://localhost:4200/products'" (click)='getnum()'><a routerLink="/products">{{dictionary[language.lantype]['cakemanagement']}}</a></li>
+            <li [class.selected]="num=='http://localhost:4200/userlist'" (click)='getnum()'><a routerLink="/userlist">{{dictionary[language.lantype]['usermanagement']}}</a></li>
+            <li [class.selected]="num=='http://localhost:4200/orderlist'" (click)='getnum()'><a routerLink="/orderlist">{{dictionary[language.lantype]['ordermanagement']}}</a></li>
+            <li [class.selected]="num=='http://localhost:4200/carlist'" (click)='getnum()'><a routerLink="/carlist">{{dictionary[language.lantype]['carmanagement']}}</a></li>
+            <li [class.selected]="num=='http://localhost:4200/search'" (click)='getnum()'><a routerLink="/search">{{dictionary[language.lantype]['search']}}</a></li>
         </ul>
         <div class="right">
             <router-outlet></router-outlet>

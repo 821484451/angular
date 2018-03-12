@@ -27,7 +27,7 @@ export class DataformComponent implements OnInit {
 
     ngOnInit() {
         this.http.get('http://localhost:88/config1707/show.txt?_='+Math.random()).subscribe((res) => {
-                console.log(res.json().pagination);
+                
                 this.showcols=res.json().cols|| [];
                 
         });
